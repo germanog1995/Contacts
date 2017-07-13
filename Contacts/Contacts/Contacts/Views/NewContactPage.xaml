@@ -48,7 +48,9 @@
                 IsRunning="{Binding IsRunning}">
                 </ActivityIndicator>
                 <StackLayout
-                Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    Padding="5"
+                    >
                     <Button
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding TakePictureCommand}"
@@ -56,6 +58,14 @@
                     BackgroundColor="Orange"
                     TextColor="White"
                     Text="Take Picture">
+                    </Button>
+                    <Button
+                    HorizontalOptions="Center"
+                    Command="{Binding TakePhotoCommand}"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    Text="Gallery">
                     </Button>
                     <Button
                     HorizontalOptions="FillAndExpand"

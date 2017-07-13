@@ -176,6 +176,32 @@ namespace Contacts.ViewModels
             IsRunning = false;
         }
 
+        public ICommand TakePhotoCommand { get { return new RelayCommand(TakePhoto); } }
+        private async void TakePhoto()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await digalogService.ShowMessage("No Camera", ":( No camera available.");
+            }
+
+            file = await CrossMedia.Current.PickPhotoAsync();
+
+            IsRunning = true;
+
+            if (file != null)
+            {
+                ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    return stream;
+                });
+            }
+
+            IsRunning = false;
+        }
+
 
         #endregion
 

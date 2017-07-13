@@ -22,6 +22,7 @@ namespace Contacts.ViewModels
         #endregion
 
         #region Properties
+        public EditContactViewModel EditContact { get; set; }
 
         public ContactsViewModel Contacts { get; set; }
 
